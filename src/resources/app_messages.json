@@ -1,0 +1,4 @@
+{
+    "invalid_state": "Invalid state",
+    "max_calls": "Max calls exceeded for: [activeState]"
+}
