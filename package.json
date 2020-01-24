@@ -26,9 +26,15 @@
     "@types/jest": "^24.9.0",
     "@types/node": "^13.1.8",
     "babel-jest": "^24.9.0",
+    "husky": "^4.2.1",
     "jest": "^24.9.0",
-    "ts-jest": "^24.3.0",
+    "ts-jest": "^25.0.0",
     "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^6.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
   }
 }
