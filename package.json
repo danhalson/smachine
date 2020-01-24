@@ -6,8 +6,10 @@
   "types": "main.d.ts",
   "scripts": {
     "start": "ts-node ./src",
-    "debug": "tsnd --respawn --transpileOnly --inspect -- ./src/index.ts",
-    "test": "jest ./src/tests"
+    "debug": "tsnd --transpileOnly --inspect -- ./src/index.ts",
+    "debug:watch": "tsnd --respawn --transpileOnly --inspect -- ./src/index.ts",
+    "test": "jest --coverage ./src/tests",
+    "test:watch": "jest --watch ./src/tests"
   },
   "author": "Dan Halson",
   "license": "ISC",

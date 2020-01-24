@@ -9,10 +9,13 @@ const states: States = {
     getInitialState: () => 'state1'
 };
 
-// TODO: Setup a wrapper state obj, with initialState defined
-
 it("throws if the state is not defined", async () => {
-    const mockMainCallable = () => run({...states, bla: () => END_STATE});
+    const mockMainCallable = () => run({...states, undefinedState: () => END_STATE});
+    await expect(mockMainCallable()).rejects.toThrow(msgs.getMessage('invalid_state'));
+});
+
+it("throws if incorrect END_STATE returned", async () => {
+    const mockMainCallable = () => run({...states, state1: () => 'continue'});
     await expect(mockMainCallable()).rejects.toThrow(msgs.getMessage('invalid_state'));
 });
 
@@ -75,6 +78,8 @@ it("throws after 10 calls to the same state", async () => {
         state3: () => 'state2',
         state4: () => END_STATE
     });
-    await expect(mockMainCallable()).rejects.toThrow(msgs.getMessage('max_calls', {activeState: 'state2'}));
+    await expect(mockMainCallable()).rejects.toThrow(
+        msgs.getMessage('max_calls', {activeState: 'state2'})
+    );
 });
 
